@@ -152,15 +152,20 @@ int existir(arvore *a, int x){
 }
 
 void imprimirFolhasMenores(arvore *a, int x){
-
-  if(a != NULL){
-    if(a->dir == NULL && a->esq == NULL && a->info < x)
-      printf("%d ", a->info);
-  
-    imprimirFolhasMenores(a->esq, x);
-    imprimirFolhasMenores(a->dir, x);
+  if (a != NULL){
+    if (a->info < x){
+      if (a->esq == NULL && a->dir == NULL){
+        printf("%d ", a->info);
+      } else {
+        imprimirFolhasMenores(a->esq, x);
+        imprimirFolhasMenores(a->dir, x);
+      }
+    } else if (a->info >= x){
+      imprimirFolhasMenores(a->esq, x);
+    }
   }
 }
+
 
 
 

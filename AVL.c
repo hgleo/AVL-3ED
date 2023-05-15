@@ -25,6 +25,22 @@ typedef struct arvore{
 }arvore;
 
 int altura(arvore *a){
+  if (a == NULL)
+    return 0;
+  else{
+    int he = altura(a->esq);
+    int hd = altura(a->dir);
+    int FB = hd - he;
+
+    if (FB > 0)
+      return hd + 1;
+    else
+      return he + 1;
+  }
+}
+
+/*
+int altura(arvore *a){
 
   if (a == NULL) return 0;
   else{
@@ -34,6 +50,7 @@ int altura(arvore *a){
     else return hd + 1;
   }
 }
+*/
 
 void ajustarFB(arvore *a){
   
